@@ -1,0 +1,103 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    var clientIP = HttpContextAccessor.HttpContext?.Connection?.RemoteIpAddress?.ToString();
+    var allowedIP = "192.168.1.200"; // Replace with your actual allowed IP
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PayrollToyHRD</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 text-gray-800">
+
+    <!-- Navbar -->
+    <header class="bg-white/80 backdrop-blur border-b border-gray-200 shadow-sm sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-4">
+                    <a class="text-2xl font-bold text-blue-600 hover:text-blue-800" asp-controller="Report" asp-action="Index">PayrollToyHRD</a>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a class="text-gray-700 hover:text-blue-600 font-medium" asp-controller="Report" asp-action="Index">Home</a>
+                    <a class="text-gray-700 hover:text-blue-600 font-medium" asp-controller="Report" asp-action="LayOffSalarySheet">LayOff Salary</a>
+                    <a class="text-gray-700 hover:text-blue-600 font-medium" asp-controller="Report" asp-action="PostalAdCardList">Postal List</a>
+                    @if (clientIP == allowedIP)
+                    {
+                        <a class="text-gray-700 hover:text-blue-600 font-medium" asp-controller="Settlement" asp-action="UploadExcel">Upload Settlement</a>
+
+                    }
+                    <a class="text-gray-700 hover:text-blue-600 font-medium" asp-controller="Report" asp-action="FinalSettlementReport">Final Settlement</a>
+                    <a class="text-gray-700 hover:text-blue-600 font-medium" asp-controller="Report" asp-action="TransportBillGenerate">Tansport Bill</a>
+                    <a class="text-gray-700 hover:text-blue-600 font-medium" asp-controller="Leave" asp-action="LeavePage">Leave</a>
+                    <a class="text-gray-700 hover:text-blue-600 font-medium" asp-controller="Pf" asp-action="GeneratePfApplicationView">PF</a>
+                    <a class="text-gray-700 hover:text-blue-600 font-medium" asp-controller="Incrementletter" asp-action="Index">Increment</a>
+                    @if (clientIP == allowedIP)
+                    {
+                        <a class="text-gray-700 hover:text-blue-600 font-medium" asp-controller="Backup" asp-action="Index">Backup</a>
+                    }
+                </div>
+
+                <!-- Mobile Hamburger Menu -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuToggle" class="text-gray-600 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="md:hidden hidden bg-white/80 backdrop-blur border-t border-gray-200 shadow-lg">
+        <div class="flex flex-col space-y-4 px-4 py-2">
+            <a class="text-gray-700 hover:text-blue-600" asp-controller="Report" asp-action="Index">Home</a>
+            <a class="text-gray-700 hover:text-blue-600" asp-controller="Report" asp-action="LayOffSalarySheet">LayOff Salary</a>
+            <a class="text-gray-700 hover:text-blue-600" asp-controller="Report" asp-action="PostalAdCardList">Postal List</a>
+            @if (clientIP == allowedIP)
+            {
+                      <a class="text-gray-700 hover:text-blue-600" asp-controller="Settlement" asp-action="UploadExcel">Upload Settlement</a>
+            }
+            
+            <a class="text-gray-700 hover:text-blue-600" asp-controller="Report" asp-action="FinalSettlementReport">Final Settlement</a>
+            <a class="text-gray-700 hover:text-blue-600" asp-controller="Leave" asp-action="LeavePage">Leave</a>
+            <a class="text-gray-700 hover:text-blue-600" asp-controller="Pf" asp-action="GeneratePfApplicationView">PF</a>
+            <a class="text-gray-700 hover:text-blue-600" asp-controller="Incrementletter" asp-action="Index">Increment</a>
+            @if (clientIP == allowedIP)
+                    {
+                <a class="text-gray-700 hover:text-blue-600" asp-controller="Backup" asp-action="Index">Backup</a>
+                    }
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        @RenderBody()
+    </main>
+
+    @RenderSection("Scripts", required: false)
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        mobileMenuToggle.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+
+</body>
+
+</html>

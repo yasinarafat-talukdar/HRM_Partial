@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Generate PF Applications";
+}
+
+<div class="container mx-auto my-8 p-6 max-w-lg bg-white shadow-lg rounded-lg">
+    <div class="bg-gradient-to-r from-green-400 to-blue-500 text-white text-center py-4 rounded-t-lg">
+        <h2 class="text-2xl font-semibold">
+            <i class="bi bi-person-badge"></i> Generate PF Application
+        </h2>
+    </div>
+    <div class="p-4">
+        <form id="generateCardForm" action="/Pf/GeneratePfApplication" method="post" class="space-y-6" target="_blank">
+            <!-- Dropdown for Selection Option -->
+            <div class="flex flex-col">
+                <label for="option" class="text-lg font-medium text-gray-700">Select Option:</label>
+                <select id="option" name="option" class="form-select mt-2 px-4 py-3 rounded-md border-gray-300 focus:ring-2 focus:ring-green-500">
+                    <option value="all">All Employees</option>
+                    <option value="employee">Specific Employees</option>
+                </select>
+            </div>
+
+            <!-- Employee Code Input (Hidden initially) -->
+            <div id="employeeInput" class="flex flex-col hidden">
+                <label for="empCode" class="text-lg font-medium text-gray-700">Employee Codes:</label>
+                <input type="text"
+                       id="empCode"
+                       name="empCode"
+                       class="mt-2 p-3 border rounded-md focus:ring-2 focus:ring-green-500"
+                       placeholder="Enter Employee Codes (comma-separated, e.g., EMP001, EMP002)">
+                <small class="text-sm text-gray-500 mt-1">Enter multiple Employee IDs separated by commas.</small>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center">
+                <button type="submit" class="w-full bg-gradient-to-r from-green-400 to-blue-500 text-white py-3 px-6 rounded-full hover:from-green-500 hover:to-blue-600 focus:ring-2 focus:ring-green-500">
+                    <i class="bi bi-file-earmark-pdf"></i> Generate Application
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const optionSelect = document.getElementById('option');
+    const employeeInput = document.getElementById('employeeInput');
+    const empCodeInput = document.getElementById('empCode');
+    const form = document.getElementById('generateCardForm');
+
+    // Show or hide input fields based on dropdown selection
+    optionSelect.addEventListener('change', function () {
+        const value = this.value;
+        employeeInput.style.display = value === 'employee' ? 'block' : 'none';
+    });
+
+    // Validate form submission
+    form.addEventListener('submit', function (event) {
+        if (optionSelect.value === 'employee' && empCodeInput.value.trim() === '') {
+            event.preventDefault();
+            alert('Please enter Employee IDs.');
+        }
+    });
+</script>

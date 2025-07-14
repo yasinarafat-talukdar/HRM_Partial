@@ -1,0 +1,191 @@
+﻿@{
+    ViewData["Title"] = "Lay-Off Salary Sheet Final";
+}
+
+<div class="container mx-auto mt-8 px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Lay-Off Salary Sheet Final -->
+        <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="card-header bg-gradient-to-r from-green-400 to-blue-500 text-white text-center py-4">
+                <h3 class="text-xl font-semibold">Lay-Off Salary Sheet Final (March-2025)</h3>
+            </div>
+            <div class="card-body p-6">
+                @if (TempData["Message"] != null)
+                {
+                    <div class="alert alert-warning text-center bg-yellow-100 text-yellow-800 p-4 rounded-lg mb-4">
+                        @TempData["Message"]
+                    </div>
+                }
+
+                <form method="post" asp-action="LayOffSalarySheetReport" class="space-y-6" target="_blank">
+                    <div class="mb-4">
+                        <label class="block text-lg font-medium text-gray-700">Select Section:</label>
+                        @await Html.PartialAsync("_SectionDropdown")
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn bg-gradient-to-r from-green-400 to-blue-500 text-white text-lg py-3 rounded-md w-full hover:from-green-500 hover:to-blue-600">
+                            Preview
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Lay-Off Salary Bank Final Advice -->
+        <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="card-header bg-gradient-to-r from-green-400 to-blue-500 text-white text-center py-4">
+                <h3 class="text-xl font-semibold">Lay-Off Salary Bank Final Advice (March-2025)</h3>
+            </div>
+            <div class="card-body p-6">
+                @if (TempData["Message"] != null)
+                {
+                    <div class="alert alert-warning text-center bg-yellow-100 text-yellow-800 p-4 rounded-lg mb-4">
+                        @TempData["Message"]
+                    </div>
+                }
+
+                <form method="post" asp-action="LayOffSalaryFinalAdvice" class="space-y-6" target="_blank">
+                    <div class="mb-4">
+                        <label class="block text-lg font-medium text-gray-700">Select Section:</label>
+                        @await Html.PartialAsync("_SectionDropdown")
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn bg-gradient-to-r from-green-400 to-blue-500 text-white text-lg py-3 rounded-md w-full hover:from-green-500 hover:to-blue-600">
+                            Preview
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="container mx-auto mt-8 px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Lay-Off Salary Sheet Final -->
+        <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="card-header bg-gradient-to-r from-green-400 to-blue-500 text-white text-center py-4">
+                <h3 class="text-xl font-semibold">Lay-Off Salary Sheet Final (April-2025)</h3>
+            </div>
+            <div class="card-body p-6">
+                @if (TempData["Message"] != null)
+                {
+                    <div class="alert alert-warning text-center bg-yellow-100 text-yellow-800 p-4 rounded-lg mb-4">
+                        @TempData["Message"]
+                    </div>
+                }
+
+                <form method="post" asp-action="LayOffSalarySheetApril25Report" class="space-y-6" target="_blank">
+                    <div class="mb-4">
+                        <label class="block text-lg font-medium text-gray-700">Select Section:</label>
+                        @await Html.PartialAsync("_SectionDropdown")
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn bg-gradient-to-r from-green-400 to-blue-500 text-white text-lg py-3 rounded-md w-full hover:from-green-500 hover:to-blue-600">
+                            Preview
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Lay-Off Salary Bank Final Advice -->
+        <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="card-header bg-gradient-to-r from-green-400 to-blue-500 text-white text-center py-4">
+                <h3 class="text-xl font-semibold">Lay-Off Salary Bank Final Advice (April-2025)</h3>
+            </div>
+            <div class="card-body p-6">
+                @if (TempData["Message"] != null)
+                {
+                    <div class="alert alert-warning text-center bg-yellow-100 text-yellow-800 p-4 rounded-lg mb-4">
+                        @TempData["Message"]
+                    </div>
+                }
+
+                <form method="post" asp-action="LayOffSalaryApril25FinalAdvice" class="space-y-6" target="_blank">
+                    <div class="mb-4">
+                        <label class="block text-lg font-medium text-gray-700">Select Section:</label>
+                        @await Html.PartialAsync("_SectionDropdown")
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn bg-gradient-to-r from-green-400 to-blue-500 text-white text-lg py-3 rounded-md w-full hover:from-green-500 hover:to-blue-600">
+                            Preview
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container mx-auto mt-8 px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Lay-Off Salary Sheet Final -->
+        <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="card-header bg-gradient-to-r from-green-400 to-blue-500 text-white text-center py-4">
+                <h3 class="text-xl font-semibold">Lay-Off Salary Sheet Final (May-2025)</h3>
+            </div>
+            <div class="card-body p-6">
+                @if (TempData["Message"] != null)
+                {
+                    <div class="alert alert-warning text-center bg-yellow-100 text-yellow-800 p-4 rounded-lg mb-4">
+                        @TempData["Message"]
+                    </div>
+                }
+
+                <form method="post" asp-action="LayOffSalarySheetMay25Report" class="space-y-6" target="_blank">
+                    <div class="mb-4">
+                        <label class="block text-lg font-medium text-gray-700">Select Section:</label>
+                        @await Html.PartialAsync("_SectionDropdown")
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn bg-gradient-to-r from-green-400 to-blue-500 text-white text-lg py-3 rounded-md w-full hover:from-green-500 hover:to-blue-600">
+                            Preview
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Lay-Off Salary Bank Final Advice -->
+        <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="card-header bg-gradient-to-r from-green-400 to-blue-500 text-white text-center py-4">
+                <h3 class="text-xl font-semibold">Lay-Off Salary Bank Final Advice (May-2025)</h3>
+            </div>
+            <div class="card-body p-6">
+                @if (TempData["Message"] != null)
+                {
+                    <div class="alert alert-warning text-center bg-yellow-100 text-yellow-800 p-4 rounded-lg mb-4">
+                        @TempData["Message"]
+                    </div>
+                }
+
+                <form method="post" asp-action="LayOffSalaryMay25FinalAdvice" class="space-y-6" target="_blank">
+                    <div class="mb-4">
+                        <label class="block text-lg font-medium text-gray-700">Select Section:</label>
+                        @await Html.PartialAsync("_SectionDropdown")
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn bg-gradient-to-r from-green-400 to-blue-500 text-white text-lg py-3 rounded-md w-full hover:from-green-500 hover:to-blue-600">
+                            Preview
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("Dropdown loaded successfully");
+        });
+    </script>
+}

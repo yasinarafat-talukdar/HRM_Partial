@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Transport Bill";
+}
+
+<div class="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-xl mt-8">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4 border-b pb-2">Generate Transport Bill</h2>
+
+    <form asp-action="TransportBillReportViewer" method="post" class="space-y-4">
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">From Date:</label>
+            <input type="date" name="fromDate" required
+                   class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:border-blue-400" />
+        </div>
+
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">To Date:</label>
+            <input type="date" name="toDate" required
+                   class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:border-blue-400" />
+        </div>
+
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Employee Code (optional):</label>
+            <input type="text" name="empCode"
+                   class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:border-blue-400" />
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Select Floor (optional):</label>
+            <select name="floor" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:border-blue-400">
+                <option value="">-- All Floors --</option>
+                @foreach (var floor in ViewBag.FloorList as SelectList)
+                {
+                    <option value="@floor.Text">@floor.Text</option>
+                }
+            </select>
+        </div>
+
+
+        <div class="flex items-center">
+            <input type="checkbox" name="isBothWay" value="true" class="mr-2" />
+            <label class="text-sm text-gray-700">Bill includes both coming & going</label>
+        </div>
+
+        <div>
+            <button type="submit"
+                    class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                Generate Report
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-xl mt-10">
+    <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Upload Transport Attendance</h3>
+
+    <form asp-controller="Report" asp-action="UploadTrasportAttn" method="post" enctype="multipart/form-data" class="space-y-4">
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Select Excel File (.xlsx):</label>
+            <input type="file" name="file" accept=".xlsx" required
+                   class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:border-blue-400" />
+        </div>
+
+        <div>
+            <button type="submit"
+                    class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+                Upload
+            </button>
+        </div>
+    </form>
+
+    @if (TempData["Message"] != null)
+    {
+        <p class="mt-4 text-green-600 font-medium">@TempData["Message"]</p>
+    }
+</div>

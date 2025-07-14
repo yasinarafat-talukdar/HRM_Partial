@@ -1,0 +1,183 @@
+﻿@{
+    ViewData["Title"] = "Lay-Off Salary";
+}
+
+<div class="container mx-auto mt-8">
+    <div class="bg-white shadow-lg rounded-lg">
+        <div class="bg-gradient-to-r from-green-400 to-blue-500 text-white text-center p-6 rounded-t-lg">
+            <h3 class="text-2xl font-bold">Lay-Off 50% Advance Salary Bank Advice</h3>
+        </div>
+        <div class="p-6">
+            @if (TempData["Message"] != null)
+            {
+                <div class="alert alert-warning text-center bg-yellow-100 text-yellow-800 p-4 rounded-md mb-6">
+                    @TempData["Message"]
+                </div>
+            }
+
+            <form method="post" asp-action="LayOffSalaryReport" class="space-y-6" target="_blank">
+                <div>
+                    <label class="block text-xl font-semibold text-gray-700 mb-2">Select Section:</label>
+                    <div class="space-y-4 p-4 bg-gray-50 rounded-lg border">
+                        <div class="flex items-center space-x-4">
+                            <input class="form-radio text-blue-500" type="radio" name="sectName" value="ALL" id="allSections" required>
+                            <label for="allSections" class="text-lg">All Sections</label>
+                        </div>
+
+                        <div class="space-y-4">
+                            <strong class="text-lg text-gray-800">Helper Sections:</strong>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <div>
+                                        <input class="form-radio text-green-500" type="radio" name="sectName" value="LINE-A,HELPER." id="lineA">
+                                        <label for="lineA" class="ml-2">LINE-A</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-green-500" type="radio" name="sectName" value="LINE-B,HELPER." id="lineB">
+                                        <label for="lineB" class="ml-2">LINE-B</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-green-500" type="radio" name="sectName" value="LINE-C,HELPER." id="lineC">
+                                        <label for="lineC" class="ml-2">LINE-C</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-green-500" type="radio" name="sectName" value="LINE-D,HELPER." id="lineD">
+                                        <label for="lineD" class="ml-2">LINE-D</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-green-500" type="radio" name="sectName" value="LINE-E,HELPER." id="lineE">
+                                        <label for="lineE" class="ml-2">LINE-E</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-green-500" type="radio" name="sectName" value="LINE-F,HELPER." id="lineF">
+                                        <label for="lineF" class="ml-2">LINE-F</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-green-500" type="radio" name="sectName" value="LINE-G,HELPER." id="lineG">
+                                        <label for="lineG" class="ml-2">LINE-G</label>
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <div>
+                                        <input class="form-radio text-green-500" type="radio" name="sectName" value="LINE-H,HELPER." id="lineH">
+                                        <label for="lineH" class="ml-2">LINE-H</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-green-500" type="radio" name="sectName" value="LINE-I,HELPER." id="lineI">
+                                        <label for="lineI" class="ml-2">LINE-I</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-green-500" type="radio" name="sectName" value="LINE-J,HELPER." id="lineJ">
+                                        <label for="lineJ" class="ml-2">LINE-J</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-green-500" type="radio" name="sectName" value="LINE-K,HELPER." id="lineK">
+                                        <label for="lineK" class="ml-2">LINE-K</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-green-500" type="radio" name="sectName" value="LINE-L,HELPER." id="lineL">
+                                        <label for="lineL" class="ml-2">LINE-L</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-green-500" type="radio" name="sectName" value="LINE-M,HELPER." id="lineM">
+                                        <label for="lineM" class="ml-2">LINE-M</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-green-500" type="radio" name="sectName" value="LINE-N,HELPER." id="lineN">
+                                        <label for="lineN" class="ml-2">LINE-N</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-green-500" type="radio" name="sectName" value="LINE-O,HELPER." id="lineO">
+                                        <label for="lineO" class="ml-2">LINE-O</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <strong class="text-lg text-gray-800">Operators:</strong>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <div>
+                                        <input class="form-radio text-blue-500" type="radio" name="sectName" value="L-A,HI-SK/SR.OPT/OPT/JR.OPT" id="opLineA">
+                                        <label for="opLineA" class="ml-2">LINE-A</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-blue-500" type="radio" name="sectName" value="L-B,HI-SK/SR.OPT/OPT/JR.OPT" id="opLineB">
+                                        <label for="opLineB" class="ml-2">LINE-B</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-blue-500" type="radio" name="sectName" value="L-C,HI-SK/SR.OPT/OPT/JR.OPT" id="opLineC">
+                                        <label for="opLineC" class="ml-2">LINE-C</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-blue-500" type="radio" name="sectName" value="L-D,HI-SK/SR.OPT/OPT/JR.OPT" id="opLineD">
+                                        <label for="opLineD" class="ml-2">LINE-D</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-blue-500" type="radio" name="sectName" value="L-E,HI-SK/SR.OPT/OPT/JR.OPT" id="opLineE">
+                                        <label for="opLineE" class="ml-2">LINE-E</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-blue-500" type="radio" name="sectName" value="L-F,HI-SK/SR.OPT/OPT/JR.OPT" id="opLineF">
+                                        <label for="opLineF" class="ml-2">LINE-F</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-blue-500" type="radio" name="sectName" value="L-G,HI-SK/SR.OPT/OPT/JR.OPT" id="opLineG">
+                                        <label for="opLineG" class="ml-2">LINE-G</label>
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <div>
+                                        <input class="form-radio text-blue-500" type="radio" name="sectName" value="L-H,HI-SK/SR.OPT/OPT/JR.OPT" id="opLineH">
+                                        <label for="opLineH" class="ml-2">LINE-H</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-blue-500" type="radio" name="sectName" value="L-I,HI-SK/SR.OPT/OPT/JR.OPT" id="opLineI">
+                                        <label for="opLineI" class="ml-2">LINE-I</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-blue-500" type="radio" name="sectName" value="L-J,HI-SK/SR.OPT/OPT/JR.OPT" id="opLineJ">
+                                        <label for="opLineJ" class="ml-2">LINE-J</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-blue-500" type="radio" name="sectName" value="L-K,HI-SK/SR.OPT/OPT/JR.OPT" id="opLineK">
+                                        <label for="opLineK" class="ml-2">LINE-K</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-blue-500" type="radio" name="sectName" value="L-L,HI-SK/SR.OPT/OPT/JR.OPT" id="opLineL">
+                                        <label for="opLineL" class="ml-2">LINE-L</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-blue-500" type="radio" name="sectName" value="L-M,HI-SK/SR.OPT/OPT/JR.OPT" id="opLineM">
+                                        <label for="opLineM" class="ml-2">LINE-M</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-blue-500" type="radio" name="sectName" value="L-N,HI-SK/SR.OPT/OPT/JR.OPT" id="opLineN">
+                                        <label for="opLineN" class="ml-2">LINE-N</label>
+                                    </div>
+                                    <div>
+                                        <input class="form-radio text-blue-500" type="radio" name="sectName" value="L-O,HI-SK/SR.OPT/OPT/JR.OPT" id="opLineO">
+                                        <label for="opLineO" class="ml-2">LINE-O</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-grid mt-6">
+                    <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-md text-lg">Preview</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("Selection list loaded successfully");
+        });
+    </script>
+}

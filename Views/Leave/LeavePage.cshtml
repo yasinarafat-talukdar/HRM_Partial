@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Generate Leave Form";
+    var isAllowed = string.Equals(Convert.ToString(ViewBag.IsAllowed), "True", StringComparison.OrdinalIgnoreCase);
+}
+
+<div class="flex items-center justify-center">
+    <section class="w-full max-w-xl bg-white shadow-2xl rounded-3xl p-6 space-y-6">
+        <h2 class="text-2xl font-bold text-center text-green-600">Leave Form Management</h2>
+
+        <form method="post" asp-action="GenerateLeaveForm" asp-controller="Leave" target="_blank" class="space-y-4">
+            <div>
+                <label for="empCode" class="block mb-1 text-base font-semibold text-gray-700">Employee Code</label>
+                <input type="text" id="empCode" name="empCode" required
+                       placeholder="Enter Employee Code (e.g., EMP123)"
+                       class="w-full border-2 border-gray-300 p-2.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" />
+            </div>
+
+            <div>
+                <label for="leaveType" class="block mb-1 text-base font-semibold text-gray-700">Leave Type</label>
+                <select id="leaveType" name="leaveType" required
+                        class="w-full border-2 border-gray-300 p-2.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+                    <option value="">-- Select Leave Type --</option>
+                    <option value="CL">Casual Leave (CL)</option>
+                    <option value="SL">Sick Leave (SL)</option>
+                    <option value="ML">Maternity Leave (ML)</option>
+                    <option value="EL">Earned Leave (EL)</option>
+                </select>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="startDate" class="block mb-1 text-base font-semibold text-gray-700">Start Date</label>
+                    <input type="date" id="startDate" name="startDate"
+                           class="w-full border-2 border-gray-300 p-2.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" />
+                </div>
+
+                <div>
+                    <label for="endDate" class="block mb-1 text-base font-semibold text-gray-700">End Date</label>
+                    <input type="date" id="endDate" name="endDate"
+                           class="w-full border-2 border-gray-300 p-2.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400" />
+                </div>
+            </div>
+
+            <div>
+                <button type="submit"
+                        class="w-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-semibold py-3 rounded-lg shadow-lg transition duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-5 w-5 mr-2" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M9 12h6m2 6H7a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h6a2 2 0 012 2v7a2 2 0 01-2 2z" />
+                    </svg>
+                    Generate Leave Form
+                </button>
+            </div>
+        </form>
+
+        <hr class="border-gray-200 my-4">
+
+        @if (isAllowed)
+        {
+            <div class="text-center">
+                <a asp-controller="Leave" asp-action="Upload"
+                   class="inline-block bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-semibold py-2.5 px-5 rounded-lg shadow-lg transition duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-5 w-5 mr-2" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 12v8m0-8l4 4m-4-4l-4 4" />
+                    </svg>
+                    Add Bulk
+                </a>
+            </div>
+        }
+
+        @if (ViewData["ErrorMessage"] != null)
+        {
+            <div class="mt-4 bg-red-100 text-red-800 text-center py-3 px-4 rounded-lg shadow">
+                @ViewData["ErrorMessage"]
+            </div>
+        }
+    </section>
+</div>
+

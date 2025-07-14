@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Upload Excel File";
+}
+
+<section class="flex items-center justify-center py-10">
+    <div class="w-full max-w-md bg-white shadow-xl rounded-2xl p-8 space-y-8">
+        <h2 class="text-3xl font-bold text-center text-gray-800">Upload Employee Settlement Excel</h2>
+
+        <form asp-controller="Settlement" asp-action="UploadExcel" enctype="multipart/form-data" method="post" class="space-y-6">
+
+            <div>
+                <label for="excelFile" class="block text-lg font-medium text-gray-700 mb-2">Select Excel File</label>
+
+                <div class="flex items-center justify-center w-full">
+                    <label class="flex flex-col items-center w-full px-4 py-6 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-lg shadow-lg tracking-wide uppercase cursor-pointer hover:from-green-500 hover:to-blue-600 transition duration-300">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M16.88 9.94A6.5 6.5 0 003.5 11H2a8 8 0 0114.88-1.06zM14 14v-3h-4v3h-3l4 4 4-4h-3z" />
+                        </svg>
+                        <span class="mt-2 text-base leading-normal">Choose a file</span>
+                        <input type="file" name="excelFile" class="hidden" accept=".xlsx" required />
+                    </label>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit" class="w-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-semibold py-3 rounded-lg shadow-md transition duration-300">
+                    Upload File
+                </button>
+            </div>
+
+        </form>
+
+        @if (ViewBag.Message != null)
+        {
+            <div class="mt-6 bg-blue-100 text-blue-800 text-center py-4 px-6 rounded-lg shadow">
+                @ViewBag.Message
+            </div>
+        }
+    </div>
+</section>

@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Postal AD Card List";
+}
+
+<div class="container mx-auto mt-10 px-4">
+    <!-- Page Header -->
+    <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-gray-800">Postal AD Card Lists</h1>
+    </div>
+
+    <!-- TempData Message Alert -->
+    @if (TempData["Message"] != null)
+    {
+        <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 mb-6 rounded-lg text-center">
+            @TempData["Message"]
+        </div>
+    }
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Postal AD Card List -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-gradient-to-r from-green-400 to-blue-500 text-white text-center py-4">
+                <h2 class="text-xl font-semibold">Postal AD Card List</h2>
+            </div>
+            <div class="p-6">
+                <form method="post" asp-action="PostalAdCardList" target="_blank">
+                    <button type="submit"
+                            class="w-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white text-lg py-3 rounded-md transition">
+                        Preview
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- MNC Postal AD Card List -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-gradient-to-r from-green-400 to-blue-500 text-white text-center py-4">
+                <h2 class="text-xl font-semibold">MNC Postal AD Card List</h2>
+            </div>
+            <div class="p-6">
+                <form method="post" asp-action="PostalAdCardListMNC" target="_blank">
+                    <button type="submit"
+                            class="w-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white text-lg py-3 rounded-md transition">
+                        Preview
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("Postal AD Card Lists page loaded successfully");
+        });
+    </script>
+}

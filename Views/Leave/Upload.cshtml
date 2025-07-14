@@ -1,0 +1,44 @@
+﻿@model IFormFile
+
+@{
+    ViewData["Title"] = "Leave Upload";
+}
+
+<div class="container mx-auto mt-8 p-6 max-w-lg bg-white shadow-lg rounded-lg">
+    <h2 class="text-3xl font-semibold text-center text-gray-800 mb-6">Upload Leave Data</h2>
+
+    <!-- Success Message -->
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success bg-green-100 text-green-800 border-l-4 border-green-500 p-4 mb-4 rounded-md">
+            @TempData["Success"]
+            <button type="button" class="text-green-500 ml-4" data-bs-dismiss="alert" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    }
+
+    <!-- Error Message -->
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger bg-red-100 text-red-800 border-l-4 border-red-500 p-4 mb-4 rounded-md">
+            @TempData["Error"]
+            <button type="button" class="text-red-500 ml-4" data-bs-dismiss="alert" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    }
+
+    <!-- Form -->
+    <form asp-action="Upload" method="post" enctype="multipart/form-data" class="space-y-6">
+        <div class="form-group">
+            <label for="file" class="block text-lg font-medium text-gray-700">Upload Excel File</label>
+            <input type="file" name="file" id="file" class="w-full border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-green-500 focus:outline-none" required />
+        </div>
+
+        <button type="submit" class="w-full bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold text-lg py-3 rounded-md hover:from-green-500 hover:to-blue-600 focus:ring-2 focus:ring-green-500">
+            Upload
+        </button>
+    </form>
+</div>
+
